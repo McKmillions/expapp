@@ -6,12 +6,12 @@ angular.module( "expApp", [ "ui.router" ] )
 
 			.state( "login", {
 				url: "/"
-				, templateUrl: "templates/login/login.html"
+				, templateUrl: "../templates/login/login.html"
 				, controller: "loginCtrl"
 			} )
 			.state( "home", {
 				url: "/home"
-				, templateUrl: "templates/home/home.html"
+				, templateUrl: "../templates/home/home.html"
 				, controller: "homeCtrl"
 			} );
 
