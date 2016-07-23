@@ -23,14 +23,12 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
   margin: 0;
-  padding: 0; /* Resets the margin and padding. */
-}  /* border-box lets an element width and height not be affected by padding or borders this is best practice. https://css-tricks.com/box-sizing/*/
+  padding: 0;
+}
 body {
     background: teal;
     color: #fff;
-    /*padding-bottom: 10%;*/ /* not sure why this was here */
 }
-
 h1 {
   color: blue;
 }
