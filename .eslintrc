@@ -1,7 +1,0 @@
-# {
-#     "extends": "devmountain/es6-config"
-# }
-
-{
-    "extends": "devmountain"
-}
