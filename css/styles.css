@@ -1,0 +1,36 @@
+/*
+                               <\              _
+                                \\          _/{
+                         _       \\       _-   -_
+                       /{        / `\   _-     - -_
+                     _~  =      ( @  \ -        -  -_
+                   _- -   ~-_   \( =\ \           -  -_
+                 _~  -       ~_ | 1 :\ \      _-~-_ -  -_
+               _-   -          ~  |V: \ \  _-~     ~-_-  -_
+            _-~   -            /  | :  \ \            ~-_- -_
+         _-~    -   _.._      {   | : _-``               ~- _-_
+      _-~   -__..--~    ~-_  {   : \:}    --- hi apptricity
+    =~__.--~~              ~-_\  :  /
+                               \ : /__
+                              //`Y'--\\
+                             <+       \\
+                              \\      WWW
+                              MMM        best expense app ever */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0; /* Resets the margin and padding. */
+}  /* border-box lets an element width and height not be affected by padding or borders this is best practice. https://css-tricks.com/box-sizing/*/
+body {
+    background: teal;
+    color: #fff;
+    /*padding-bottom: 10%;*/ /* not sure why this was here */
+}
+
+h1 {
+  color: blue;
+}
