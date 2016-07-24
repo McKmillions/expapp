@@ -1,1 +1,133 @@
-<h1>Home Test</h1>
+<div id="form">
+    <div class="home-wrapper">
+        <div class="home-logo">
+            <div class="cblocks">
+                <div class="cblocks-rotater">
+                    <div class="cblock"></div>
+                    <div class="cblock"></div>
+                    <div class="cblock"></div>
+                </div>
+                <div class="cblocks-inner"></div>
+                <div class="cblocks-text">Expensed</div>
+            </div>
+        </div>
+
+        <ul class="bg-bubbles">
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+            <li>&#36;</li>
+        </ul>
+    </div>
+
+    <div id="form-wrap">
+      <h1><i class="icon-user"></i>Hello {{user.first}}!</h1>
+        <h2>Would you like to add an expense?</h2>
+        <a ng-click="logout()">Logout?</a>
+        <!-- login form -->
+        <form method="post" novalidate name="expense">
+
+            <div class="top-row">
+                <div class="field-wrap">
+                    <label ng-show="!newExpense.merchant.length">
+                        Merchant<span class="req">*</span>
+                    </label>
+                    <input type="text" name="merchant" ng-model="newExpense.merchant" ng-required="true" />
+            				<p class="error" ng-show="expense.merchant.$invalid && expense.merchant.$touched"> Please, enter merchant name.</p>
+                </div>
+
+                <div class="field-wrap">
+                    <label ng-show="!newExpense.cost.length">
+                        Cost<span class="req">*</span>
+                    </label>
+                    <input type="number" name="cost" ng-model="newExpense.cost" ng-required="true" />
+            				<p class="error" ng-show="expense.cost.$invalid && expense.cost.$touched">Please, enter cost of expense.</p>
+                </div>
+
+                <div class="field-wrap">
+                    <label ng-show="!newExpense.type.length">
+                        Type<span class="req">*</span>
+                    </label>
+                    <input type="text" name="type" ng-model="newExpense.type" ng-required="true" />
+            				<p class="error" ng-show="expense.type.$invalid && expense.type.$touched"> Please, enter type of expense (ie: food).</p>
+                </div>
+
+                <div class="field-wrap">
+                    <input type="date" name="date" ng-model="newExpense.date" ng-required="true" />
+            				<p class="error" ng-show="newExpense.comment.length && expense.date.$touched"> Please, enter expense date.</p>
+                </div>
+
+                <div class="field-wrap">
+                    <label ng-show="!newExpense.comment.length">
+                        Comment<span class="req">*</span>
+                    </label>
+                    <input type="text" name="comment" ng-model="newExpense.comment" ng-required="true" />
+            				<p class="error" ng-show="expense.comment.$invalid && expense.comment.$touched"> Please, enter comment.</p>
+                </div>
+
+                <button type="submit" class="button button-block" ng-click="addUserExpense()" />Add Expense</button>
+            </div>
+        </form>
+        <!-- login form -->
+    </div>
+
+
+    <div id="signup">
+        <!-- <h1>Need an account? <a href="" ng-click="ShowHide()">Sign up</a></h1> -->
+        <!-- signup form -->
+        <form ng-show="IsVisible" novalidate method="post" name="signup">
+
+            <div class="field-wrap">
+                <label ng-show="!userInfo.first.length">
+                    First Name<span class="req">*</span>
+                </label>
+                <input type="text" name="firstname" ng-model="userInfo.first" ng-required="true" ng-minlength="2" autocomplete="off" />
+                <p class="error" ng-show="signup.firstname.$invalid && signup.firstname.$touched"> Please, enter your first name</p>
+            </div>
+
+            <div class="field-wrap">
+                <label ng-show="!userInfo.last.length">
+                    Last Name<span class="req">*</span>
+                </label>
+                <input type="text" name="lastname" ng-model="userInfo.last" ng-required="true" autocomplete="off" />
+                <p class="error" ng-show="signup.lastname.$invalid && signup.lastname.$touched"> Please, enter your last name</p>
+            </div>
+
+            <div class="field-wrap">
+                <label ng-show="!userInfo.username.length">
+                    Username<span class="req">*</span>
+                </label>
+                <input type="text" name="username" ng-model="userInfo.username" ng-required="true" ng-minlength="2" autocomplete="off" />
+                <p class="error" ng-show="signup.username.$invalid && signup.username.$touched"> Please, enter your username</p>
+            </div>
+
+            <div class="field-wrap">
+                <label ng-show="!userInfo.password.length">
+                    Password<span class="req">*</span>
+                </label>
+                <input type="password" name="pswd1" ng-model="userInfo.password" ng-required="true" ng-minlength="2" autocomplete="off" />
+                <p class="error" ng-show="signup.pswd1.$invalid && signup.pswd1.$touched"> Please, enter your password</p>
+            </div>
+
+            <div class="field-wrap">
+                <label ng-show="!userInfo.passwordTwo.length">
+                    Re-type Password<span class="req">*</span>
+                </label>
+                <input type="password" name="pswd2" ng-model="userInfo.passwordTwo" ng-required="true" ng-minlength="2" autocomplete="off" />
+                <p class="error" ng-show="signup.pswd2.$invalid && signup.pswd2.$touched"> Please, re-enter your password</p>
+            </div>
+
+            <button class="button button-block" type="submit" ng-click="createUser()">Sign up</button>
+
+        </form>
+        <!-- signup form -->
+    </div>
+
+</div>
+<!-- /form -->

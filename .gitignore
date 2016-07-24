@@ -1,5 +1,5 @@
 node_modules
-DS_Store
 .eslintrc
+DS_Store
 .idea
 package.json

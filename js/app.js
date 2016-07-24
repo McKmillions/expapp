@@ -1,4 +1,4 @@
-angular.module( "expApp", [ "ui.router" ] )
+angular.module( "expApp", [ "ui.router", 'ngCookies' ] )
 
 .config( function( $stateProvider, $urlRouterProvider ) {
 
