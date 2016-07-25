@@ -88,17 +88,17 @@
                 <label ng-show="!userInfo.password.length">
                     Password<span class="req">*</span>
                 </label>
-                <input type="password" name="pswd1" ng-model="userInfo.password" ng-required="true" ng-minlength="2" autocomplete="off" />
-                <p class="error" ng-show="signup.pswd1.$invalid && signup.pswd1.$touched"> Please, enter your password</p>
+                <input type="password" name="pswd" ng-model="userInfo.password" ng-required="true" ng-minlength="2" autocomplete="off" />
+                <p class="error" ng-show="signup.pswd.$invalid && signup.pswd.$touched"> Please, enter your password</p>
             </div>
 
-            <div class="field-wrap">
+            <!-- <div class="field-wrap">
                 <label ng-show="!userInfo.passwordTwo.length">
                     Re-type Password<span class="req">*</span>
                 </label>
                 <input type="password" name="pswd2" ng-model="userInfo.passwordTwo" ng-required="true" ng-minlength="2" autocomplete="off" />
                 <p class="error" ng-show="signup.pswd2.$invalid && signup.pswd2.$touched"> Please, re-enter your password</p>
-            </div>
+            </div> -->
 
             <button class="button button-block" type="submit" ng-click="createUser()">Sign up</button>
 

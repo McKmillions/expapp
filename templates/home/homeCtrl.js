@@ -3,6 +3,7 @@ angular.module( "expApp" ).controller( "homeCtrl", function( $scope, $state, $co
 	$scope.user = $cookies.getObject( "user" );
 	$scope.pending = [];
 	$scope.reimbursed = [];
+	$scope.expenses = [];
 	$scope.edit = true;
 
 	if ( !$scope.user ) {
@@ -38,8 +39,6 @@ angular.module( "expApp" ).controller( "homeCtrl", function( $scope, $state, $co
 	};
 	// $scope.getExpenses();
 
-	$scope.expenses = [];
-
 	$scope.addUserExpense = function() {
 		// $cookies.putObject( "newExpense", $scope.newExpense );
 		$scope.expenses.push( $scope.newExpense );
@@ -50,8 +49,7 @@ angular.module( "expApp" ).controller( "homeCtrl", function( $scope, $state, $co
 	};
 
 	$scope.rmbAlert = function( expense ) {
-
-    																				console.log( "expense(rmbAlert)", expense );
+		console.log( "expense(rmbAlert)", expense );
 
 		$scope.expId = expenseId;
 
