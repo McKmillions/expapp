@@ -439,3 +439,128 @@ textarea {
 #form-wrap {
     margin-top: 200px;
 }
+
+.logout {
+  text-align: center;
+  margin-left: 40%;
+  color: #fff
+}
+.logout:hover {
+    color: #179b77;
+}
+
+.container {
+  margin-top: 20px;
+}
+#pen, #rmb {
+  color: #179b77;
+  line-height: 1.5;
+  margin: 0;
+  padding: 15px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.pending {
+  background-color: #fcf8f2;
+  padding: 5px;
+}
+.reimbursed {
+  margin-top: 20px;
+  background-color: #fcf8f2;
+  padding: 5px;
+}
+/*.heading {
+  padding-top: 15px;
+  background-color: #EAE9E6;
+  width: 100%
+}*/
+.headSpan {
+  /*margin: auto;*/
+  margin-top: 1em;
+  margin-bottom: 1em;
+  min-width: 15.6666667%;
+  max-width: 15.6666667%;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  font-size: 1.03em;
+  justify-content: flex-start;
+  /*text-overflow: ;*/
+  background-color: transparent;
+  padding: 1px;
+}
+.negative {
+  color: rgb(124, 1, 23);
+}
+.positive {
+  color: #98a448;
+}
+.green {
+  color: #D1E16E;
+}
+.btnsStripe {
+  height: 1em;
+  /*padding-left: 10px;*/
+}
+.border {
+  border-right: 3px solid #8f8f8f;
+  margin-right: 0;
+  padding-right: 15px;
+}
+.content {
+  border-top: 3px solid #8f8f8f;
+  background-color: rgba(232, 230, 227, 0.63);
+}
+.content:hover {
+  background-color: #f7eeea;
+  color: inherit;
+}
+.contBtns {
+  background-color: inherit;
+  color: #FFA67D;
+  border: none;
+  /*padding: 5px;*/
+  margin: auto;
+  display: block;
+  font-size: 0.85em;
+}
+.contBtns:hover {
+  background-color: white;
+  color: #2C211B;
+}
+.smInput {
+  font-size: 16px;
+  height: 35px;
+  padding: 0px;
+}
+#editInput {
+  border-color: #cccccc;
+  border-style: solid;
+  border-radius: 0.3em;
+  padding: 12px;
+  width: 97%;
+  font-size: 1em;
+  border-width: 0px;
+  text-shadow: 0px 0px 0px rgba(42, 42, 42, .75);
+  box-shadow: 0px 3px 12px 0px rgba(193, 193, 193, 0.72);
+  background-color: #ffffff;
+}
+/*.reimbQty {
+  width: 80px;
+  height: 80px;
+  font-size: 2.5em;
+  margin: 10px;
+  margin-bottom: 0px;
+  border-width: 0px;
+  text-shadow: 0px 0px 0px rgba(42, 42, 42, .75);
+  box-shadow: 0px 3px 12px 0px rgba(193, 193, 193, 0.72);
+  background-color: #ffffff;
+}
+.qty {
+  display: inline-block;
+}
+
+.qty label {
+  font-size: 2em;
+}*/

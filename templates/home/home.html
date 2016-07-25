@@ -13,23 +13,23 @@
         </div>
 
         <ul class="bg-bubbles">
+            <li><i class="icon-money-1"></i></li>
+            <li><i class="icon-money"></i></li>
+            <li>&#36;</li>
+            <li><i class="icon-money-1"></i></li>
+            <li><i class="icon-money-1"></i></li>
             <li>&#36;</li>
             <li>&#36;</li>
             <li>&#36;</li>
             <li>&#36;</li>
-            <li>&#36;</li>
-            <li>&#36;</li>
-            <li>&#36;</li>
-            <li>&#36;</li>
-            <li>&#36;</li>
-            <li>&#36;</li>
+            <li><i class="icon-money-1"></i></li>
         </ul>
     </div>
 
     <div id="form-wrap">
-      <h1><i class="icon-user"></i>Hello {{user.first}}!</h1>
+        <h1>Hello {{user.first}}!</h1>
         <h2>Would you like to add an expense?</h2>
-        <a ng-click="logout()">Logout?</a>
+
         <!-- login form -->
         <form method="post" novalidate name="expense">
 
@@ -39,15 +39,15 @@
                         Merchant<span class="req">*</span>
                     </label>
                     <input type="text" name="merchant" ng-model="newExpense.merchant" ng-required="true" />
-            				<p class="error" ng-show="expense.merchant.$invalid && expense.merchant.$touched"> Please, enter merchant name.</p>
+                    <p class="error" ng-show="expense.merchant.$invalid && expense.merchant.$touched"> Please, enter merchant name.</p>
                 </div>
 
                 <div class="field-wrap">
-                    <label ng-show="!newExpense.cost.length">
+                    <label ng-show="!newExpense.cost">
                         Cost<span class="req">*</span>
                     </label>
                     <input type="number" name="cost" ng-model="newExpense.cost" ng-required="true" />
-            				<p class="error" ng-show="expense.cost.$invalid && expense.cost.$touched">Please, enter cost of expense.</p>
+                    <p class="error" ng-show="expense.cost.$invalid && expense.cost.$touched">Please, enter cost of expense.</p>
                 </div>
 
                 <div class="field-wrap">
@@ -55,79 +55,114 @@
                         Type<span class="req">*</span>
                     </label>
                     <input type="text" name="type" ng-model="newExpense.type" ng-required="true" />
-            				<p class="error" ng-show="expense.type.$invalid && expense.type.$touched"> Please, enter type of expense (ie: food).</p>
+                    <p class="error" ng-show="expense.type.$invalid && expense.type.$touched"> Please, enter type of expense (ie: food).</p>
                 </div>
 
                 <div class="field-wrap">
                     <input type="date" name="date" ng-model="newExpense.date" ng-required="true" />
-            				<p class="error" ng-show="newExpense.comment.length && expense.date.$touched"> Please, enter expense date.</p>
+                    <!-- <p class="error" ng-show="!expense.date.length && expense.date.$touched"> Please, enter expense date.</p> -->
                 </div>
 
                 <div class="field-wrap">
                     <label ng-show="!newExpense.comment.length">
-                        Comment<span class="req">*</span>
+                      Comment<span class="req">*</span>
                     </label>
                     <input type="text" name="comment" ng-model="newExpense.comment" ng-required="true" />
-            				<p class="error" ng-show="expense.comment.$invalid && expense.comment.$touched"> Please, enter comment.</p>
+                    <p class="error" ng-show="expense.comment.$invalid && expense.comment.$touched"> Please, enter comment.</p>
                 </div>
 
-                <button type="submit" class="button button-block" ng-click="addUserExpense()" />Add Expense</button>
+                <button type="submit" class="button button-block" ng-click="addUserExpense()" />
+                  <!-- <i class="icon-money" ng-show="expense.comment.$touched"></i> -->
+                  Add Expense
+              </button>
             </div>
         </form>
         <!-- login form -->
     </div>
 
-
-    <div id="signup">
-        <!-- <h1>Need an account? <a href="" ng-click="ShowHide()">Sign up</a></h1> -->
-        <!-- signup form -->
-        <form ng-show="IsVisible" novalidate method="post" name="signup">
-
-            <div class="field-wrap">
-                <label ng-show="!userInfo.first.length">
-                    First Name<span class="req">*</span>
-                </label>
-                <input type="text" name="firstname" ng-model="userInfo.first" ng-required="true" ng-minlength="2" autocomplete="off" />
-                <p class="error" ng-show="signup.firstname.$invalid && signup.firstname.$touched"> Please, enter your first name</p>
+    <div class="container">
+        <div class="pending">
+            <h2 id="pen">pending</h2>
+            <div class="heading">
+                <span class="headSpan border">merch</span>
+                <span class="headSpan border">cost</span>
+                <span class="headSpan border">type</span>
+                <span class="headSpan border">date</span>
+                <span class="headSpan border">cmnt</span>
+                <span class="headSpan">edit</span>
             </div>
 
-            <div class="field-wrap">
-                <label ng-show="!userInfo.last.length">
-                    Last Name<span class="req">*</span>
-                </label>
-                <input type="text" name="lastname" ng-model="userInfo.last" ng-required="true" autocomplete="off" />
-                <p class="error" ng-show="signup.lastname.$invalid && signup.lastname.$touched"> Please, enter your last name</p>
-            </div>
+            <div class="content" ng-repeat="expense in expenses">
+                <span ng-show="edit" class="headSpan">
+                  {{ expense.merchant }}
+                </span>
+                <span ng-show="edit" class="headSpan negative">
+                  {{ -expense.cost | number: 2 }}
+                </span>
+                <span ng-show="edit" class="headSpan">
+                  {{ expense.type }}
+                </span>
+                <span ng-show="edit" class="headSpan">
+                  {{ expense.date | date: "M/d/yy" }}
+                </span>
+                <span ng-show="edit" class="headSpan">
+                  {{ expense.comment }}
+                </span>
 
-            <div class="field-wrap">
-                <label ng-show="!userInfo.username.length">
-                    Username<span class="req">*</span>
-                </label>
-                <input type="text" name="username" ng-model="userInfo.username" ng-required="true" ng-minlength="2" autocomplete="off" />
-                <p class="error" ng-show="signup.username.$invalid && signup.username.$touched"> Please, enter your username</p>
-            </div>
+                <span ng-hide="edit" class="headSpan">
+                  <input id="editInput" class="smInput" ng-model="editExpense.merchant" placeholder="{{expense.merchant}}">
+                </span>
+                <span ng-hide="edit" class="headSpan">
+                  <input id="editInput" class="smInput" ng-model="editExpense.cost" placeholder="{{expense.cost}}">
+                </span>
+                <span ng-hide="edit" class="headSpan">
+                  <input id="editInput" class="smInput" ng-model="editExpense.type" placeholder="{{expense.type}}">
+                </span>
+                <span ng-hide="edit" class="headSpan">
+                  {{expense.date | date: "M/d/yy"}}
+                  <input id="editInput" class="smInput" type="text" ng-model="editExpense.date" placeholder="MM/DD/YYYY" >
+                </span>
+                <span ng-hide="edit" class="headSpan">
+                  <input id="editInput" class="smInput" ng-model="editExpense.comment" placeholder="{{expense.comment}}">
+                </span>
 
-            <div class="field-wrap">
-                <label ng-show="!userInfo.password.length">
-                    Password<span class="req">*</span>
-                </label>
-                <input type="password" name="pswd1" ng-model="userInfo.password" ng-required="true" ng-minlength="2" autocomplete="off" />
-                <p class="error" ng-show="signup.pswd1.$invalid && signup.pswd1.$touched"> Please, enter your password</p>
-            </div>
+                <span class="headSpan">
+                  <button class="contBtns" ng-show="edit" ng-click="edit=!edit">edit</button>
+                  <button class="contBtns" ng-click="rmbAlert(expense)">Reimburse</button>
+                  <button class="contBtns" ng-click="rmvAlert(expense)">remove</button>
 
-            <div class="field-wrap">
-                <label ng-show="!userInfo.passwordTwo.length">
-                    Re-type Password<span class="req">*</span>
-                </label>
-                <input type="password" name="pswd2" ng-model="userInfo.passwordTwo" ng-required="true" ng-minlength="2" autocomplete="off" />
-                <p class="error" ng-show="signup.pswd2.$invalid && signup.pswd2.$touched"> Please, re-enter your password</p>
-            </div>
+                  <span ng-hide="edit">
+                    <i class="icon-ok green" aria-hidden="true" ng-click="updateExpense(editExpense,expense._id); edit=!edit; editExpense=null"></i>
+                    <i class="icon-cancel negative" aria-hidden="true" ng-click="edit=!edit"></i>
+                  </span>
+                </span>
+          </div>
+        </div>
 
-            <button class="button button-block" type="submit" ng-click="createUser()">Sign up</button>
-
-        </form>
-        <!-- signup form -->
     </div>
+    <div class="container">
+        <div class="reimbursed">
+            <h2 id="rmb">reimbursed</h2>
+            <div class="heading">
+                <span class="headSpan border">merch</span>
+                <span class="headSpan border">cost</span>
+                <span class="headSpan border">type</span>
+                <span class="headSpan border">date</span>
+                <span class="headSpan border">cmnt</span>
+                <span class="headSpan">rmb</span>
+            </div>
+            <div class="content" ng-repeat="expense in expenses | orderBy:'':true">
+                <span class="headSpan">{{ expense.merchant }}</span>
+                <span class="headSpan positive">+{{ expense.cost | number: 2 }}</span>
+                <span class="headSpan">{{ expense.type }}</span>
+                <span class="headSpan">{{ expense.date | date: "M/d/yy" }}</span>
+                <span class="headSpan">{{ expense.comment }}</span>
+                <span class="headSpan">{{ expense.dateReimbursed | date: "M/d/yy" }}</span>
+            </div>
 
+        </div>
+    </div>
+    <!-- <div ng-repeat="expense in expenses">{{expense.merchant}}</div> -->
+    <a class="logout" ng-click="logout()"><i class="icon-user"></i>Logout</a>
 </div>
 <!-- /form -->
