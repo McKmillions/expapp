@@ -11,10 +11,6 @@ angular.module( "expApp" ).controller( "homeCtrl", function( $scope, $state, $co
 		return "Unauthorized", "Please log in", "error";
 	}
 
-	// console.log( "user(homeCtrl):", $scope.user );
-
-	// console.log( $scope.user[ "first" ] );
-
 	$scope.logout = function() {
 		$scope.user = {};
 		$cookies.remove( "user" );
@@ -24,53 +20,48 @@ angular.module( "expApp" ).controller( "homeCtrl", function( $scope, $state, $co
 	};
 
 	$scope.getExpenses = function() {
-		// $scope.expenses = $cookies.getObject( "newExpense" );
-		console.log( "getExpenses", $scope.expenses );
 		$scope.pending = [];
 		$scope.reimbursed = [];
-
-		// $scope.expenses.forEach( function( element ) {
-		// 	if ( element.dateReimbursed === null ) {
-		// 		$scope.pending.push( element );
-		// 	} else {
-		// 		$scope.reimbursed.push( element );
-		// 	}
-		// } );
 	};
-	// $scope.getExpenses();
 
 	$scope.addUserExpense = function() {
-		// $cookies.putObject( "newExpense", $scope.newExpense );
+		$scope.newExpense.id = $scope.expenses.length + 1;
 		$scope.expenses.push( $scope.newExpense );
-		// console.log( "newExpense: ", $scope.newExpense );
 		$scope.getExpenses();
 		$scope.newExpense = {};
 		$scope.expense.$setUntouched();
 	};
 
-	$scope.rmbAlert = function( expense ) {
-		console.log( "expense(rmbAlert)", expense );
+	$scope.reimburse = function( reimburse ) {
+		var index = reimburse.id - 1;
 
-		$scope.expId = expenseId;
+		reimburse.dateReimbursed = new Date();
+		$scope.reimbursed.push( reimburse );
+		$scope.expenses.splice( index, 1 );
+	};
 
-// 		function( inputValue ) {
-// 		if ( !inputValue ) {
-// 			console.log( "You need to enter the date of reimbursement!" );
-// 			return false;
-// 		}
-// 		$scope.rmbDate = new Date( inputValue );
-// 		if ( !$scope.rmbDate.valueOf() ) {
-// 			console.log( "You need to enter a valid date!" );
-// 			return false;
-// 		}
-// 		if ( $scope.rmbDate.valueOf() ) {
-// 			console.log( "Reimbursed!", "Reimbursement Date: " + inputValue, "success" );
-// 			expenseService.reimburse( $scope.rmbDate, $scope.expId )
-// 				.then( function( ) {
-// 					$scope.getUserExpenses();
-// 				} );
-// 		}
-// 	};
+	$scope.rmvExpense = function( expense ) {
+		$scope.expenses.splice( expense.id - 1, 1 );
+	};
+
+	// $scope.editModel = function( expense ) {
+	// 	// $scope.initialExp = expense;
+	// 	$scope.initialArr = [];
+	// 	$scope.initialArr.push( expense );
+	// 	$scope.initialExpense = $scope.initialArr.slice( 0, 1 );
+  //   $scope.initialValue = $scope.initialExpense;
+  //   console.log("initialValue", $scope.initialValue);
+	// 	$scope.expenseEdited = $scope.initialExpense;
+  //   console.log($scope.expenseEdited);
+	// };
+
+	$scope.updateExpense = function() {
+		// $scope.expenses.push( editExpense );
+		// var index = $scope.initialExpense.id - 1;
+		// $scope.expenses.splice( index, 1, $scope.expenseEdited );
+		// scope.expense = $scope.exepnseEdited;
+		// $scope.initalArr = [];
+		$scope.getExpenses();
 	};
 
 } );

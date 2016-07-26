@@ -60,7 +60,6 @@
 
                 <div class="field-wrap">
                     <input type="date" name="date" ng-model="newExpense.date" ng-required="true" />
-                    <!-- <p class="error" ng-show="!expense.date.length && expense.date.$touched"> Please, enter expense date.</p> -->
                 </div>
 
                 <div class="field-wrap">
@@ -72,7 +71,6 @@
                 </div>
 
                 <button type="submit" class="button button-block" ng-click="addUserExpense()" />
-                  <!-- <i class="icon-money" ng-show="expense.comment.$touched"></i> -->
                   Add Expense
               </button>
             </div>
@@ -110,29 +108,29 @@
                 </span>
 
                 <span ng-hide="edit" class="headSpan">
-                  <input id="editInput" class="smInput" ng-model="editExpense.merchant" placeholder="{{expense.merchant}}">
+                  <input id="editInput" class="smInput" ng-model="expense.merchant" placeholder="{{expense.merchant}}">
                 </span>
                 <span ng-hide="edit" class="headSpan">
-                  <input id="editInput" class="smInput" ng-model="editExpense.cost" placeholder="{{expense.cost}}">
+                  <input id="editInput" class="smInput" ng-model="expense.cost" placeholder="{{expense.cost}}">
                 </span>
                 <span ng-hide="edit" class="headSpan">
-                  <input id="editInput" class="smInput" ng-model="editExpense.type" placeholder="{{expense.type}}">
+                  <input id="editInput" class="smInput" ng-model="expense.type" placeholder="{{expense.type}}">
                 </span>
                 <span ng-hide="edit" class="headSpan">
                   {{expense.date | date: "M/d/yy"}}
-                  <input id="editInput" class="smInput" type="text" ng-model="editExpense.date" placeholder="MM/DD/YYYY" >
+                  <input id="editInput" class="smInput" type="text" ng-model="expense.date" placeholder="MM/DD/YYYY" >
                 </span>
                 <span ng-hide="edit" class="headSpan">
-                  <input id="editInput" class="smInput" ng-model="editExpense.comment" placeholder="{{expense.comment}}">
+                  <input id="editInput" class="smInput" ng-model="expense.comment" placeholder="{{expense.comment}}">
                 </span>
 
                 <span class="headSpan">
                   <button class="contBtns" ng-show="edit" ng-click="edit=!edit">edit</button>
-                  <button class="contBtns" ng-click="rmbAlert(expense)">Reimburse</button>
-                  <button class="contBtns" ng-click="rmvAlert(expense)">remove</button>
+                  <button class="contBtns" ng-click="reimburse(expense)">Reimburse</button>
+                  <button class="contBtns" ng-click="rmvExpense(expense)">remove</button>
 
                   <span ng-hide="edit">
-                    <i class="icon-ok green" aria-hidden="true" ng-click="updateExpense(editExpense,expense._id); edit=!edit; editExpense=null"></i>
+                    <i class="icon-ok green" aria-hidden="true" ng-click="updateExpense(editExpense); edit=!edit; editExpense=null"></i>
                     <i class="icon-cancel negative" aria-hidden="true" ng-click="edit=!edit"></i>
                   </span>
                 </span>
@@ -151,7 +149,7 @@
                 <span class="headSpan border">cmnt</span>
                 <span class="headSpan">rmb</span>
             </div>
-            <div class="content" ng-repeat="expense in expenses | orderBy:'':true">
+            <div class="content" ng-repeat="expense in reimbursed | orderBy:'':true">
                 <span class="headSpan">{{ expense.merchant }}</span>
                 <span class="headSpan positive">+{{ expense.cost | number: 2 }}</span>
                 <span class="headSpan">{{ expense.type }}</span>
@@ -162,7 +160,6 @@
 
         </div>
     </div>
-    <!-- <div ng-repeat="expense in expenses">{{expense.merchant}}</div> -->
     <a class="logout" ng-click="logout()"><i class="icon-user"></i>Logout</a>
 </div>
 <!-- /form -->
